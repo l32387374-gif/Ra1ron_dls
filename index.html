@@ -87,20 +87,22 @@
             margin-bottom: 15px;
         }
 
-        /* КНОПКА ВЫБРАТЬ */
+        /* КНОПКА ВЫБРАТЬ КАК ССЫЛКА */
         .buy-btn {
+            display: block;
             background: linear-gradient(135deg, #ff3333, #b30000);
             color: white;
-            border: none;
+            text-decoration: none;
+            text-align: center;
             width: 100%;
             padding: 10px 0;
             font-weight: bold;
             border-radius: 8px;
-            cursor: pointer;
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 0.5px;
             transition: 0.2s;
+            box-sizing: border-box;
         }
         .buy-btn:hover {
             transform: translateY(-2px);
@@ -132,11 +134,11 @@
             align-items: center;
             padding: 40px;
             text-align: center;
-            box-sizing: border-box;
+box-sizing: border-box;
         }
 
         /* ТЕКСТ ПО ЦЕНТРУ ЭКРАНА */
-.main-content h2 {
+        .main-content h2 {
             font-size: 32px;
             font-weight: 800;
             margin-bottom: 15px;
@@ -155,16 +157,16 @@
             position: relative;
         }
 
-        /* КНОПКА ВОЙТИ / ПЕРЕЙТИ */
+        /* КНОПКА ВОЙТИ КАК ССЫЛКА */
         .action-btn {
+            display: inline-block;
             background: #ffffff;
             color: #000000;
-            border: none;
+            text-decoration: none;
             padding: 15px 40px;
             font-size: 16px;
             font-weight: bold;
             border-radius: 12px;
-            cursor: pointer;
             text-transform: uppercase;
             transition: all 0.3s ease;
             z-index: 5;
@@ -250,7 +252,7 @@
                 <img class="product-img" src="menu_so2.png" alt="Standoff 2">
                 <div class="product-name">Ra1ron.dls MENU</div>
                 <div class="product-desc">Standoff 2 • v0.39.2 (Non-Root)</div>
-                <button class="buy-btn" onclick="openTelegram()">Выбрать</button>
+                <a class="buy-btn" href="tg://resolve?domain=Ra1ron_dls">Выбрать</a>
             </div>
 
             <!-- Продукт 2: PUBG Mobile -->
@@ -264,28 +266,19 @@
         </div>
 
         <!-- ГЛАВНАЯ ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
-        <div class="main-content">
+<div class="main-content">
             
-            <!-- Левый персонаж -->
-<img class="character-left" src="character1.jpg" alt="Standoff Character Left">
+            <img class="character-left" src="character1.jpg" alt="Standoff Character Left">
             
-            <!-- Текст -->
             <h2>Премиальный софт<br>Ra1ron.dls<br>для Standoff 2</h2>
             <p>Удобные оверлей-меню, кастомные прицелы FOV и стабильная работа без вылетов.</p>
-            <button class="action-btn" onclick="openTelegram()">Войти в группу</button>
+            <a class="action-btn" href="tg://resolve?domain=Ra1ron_dls">Войти в группу</a>
 
-            <!-- Правый персонаж -->
             <img class="character-right" src="character2.jpg" alt="Standoff Character Right">
 
         </div>
 
     </div>
-
-    <script>
-        function openTelegram() {
-            window.location.href = "https://t.me";
-        }
-    </script>
 
 </body>
 </html>
