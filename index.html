@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ra1ron.dls - Премиальный софт</title>
+    <style>
+        /* УЛЬТРА-ТЕМНЫЙ ГЕЙМЕРСКИЙ ФОН */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0a0c; 
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            color: #FFFFFF;
+            overflow: hidden;
+        }
+
+        /* ГЛАВНЫЙ БОЛЬШОЙ КОНТЕЙНЕР */
+        .hub-container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            background: rgba(18, 18, 22, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+
+        /* ЛЕВАЯ ПАНЕЛЬ С ТОВАРAМИ */
+        .products-sidebar {
+            width: 30%;
+            background: rgba(10, 10, 12, 0.4);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        /* КАРТОЧКА ТОВАРА */
+        .product-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover:not(.disabled) {
+            border-color: #ff3333;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .product-card.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* СКРИНШОТ ВНУТРИ КАРТОЧКИ ТОВАРА */
+        .product-img {
+            width: 100%;
+            height: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .product-desc {
+            font-size: 12px;
+            color: #7a7c85;
+            margin-bottom: 15px;
+        }
+
+        /* КНОПКА ВЫБРАТЬ */
+        .buy-btn {
+            background: linear-gradient(135deg, #ff3333, #b30000);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px 0;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+        }
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.4);
+        }
+
+        /* СЕРАЯ ПЛАШКА ДЛЯ ПУБГА */
+        .soon-btn {
+            background: #242427;
+            color: #ff3333;
+            border: 1px solid rgba(255,255,255,0.05);
+            width: 100%;
+            padding: 10px 0;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        /* ЦЕНТРАЛЬНАЯ ЧАСТЬ */
+        .main-content {
+            width: 70%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* ТЕКСТ ПО ЦЕНТРУ ЭКРАНА */
+        .main-content h2 {
+20:20
+font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            z-index: 5;
+            position: relative;
+        }
+        .main-content p {
+            color: #a0a5b5;
+            font-size: 16px;
+            max-width: 450px;
+            margin-bottom: 30px;
+            z-index: 5;
+            position: relative;
+        }
+
+        /* КНОПКА ВОЙТИ / ПЕРЕЙТИ */
+        .action-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            z-index: 5;
+            position: relative;
+        }
+        .action-btn:hover {
+            background: #ff3333;
+            color: #ffffff;
+            box-shadow: 0 5px 20px rgba(255, 51, 51, 0.5);
+        }
+
+        /* ПЕРСОНАЖИ ВЫРАВНЕНЫ ВЫШЕ И ВСТАЛИ РОВНО ПО БОКАМ */
+        .character-left {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 180px;       
+            width: 180px;        
+            object-fit: cover;   
+            border-radius: 24px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .character-right {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 180px;
+            width: 180px;
+            object-fit: cover;
+            border-radius: 24px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hub-container">
+        
+        <!-- ЛЕВАЯ КОЛОНКА С ПРОДУКТАМИ -->
+        <div class="products-sidebar">
+            
+            <!-- Продукт 1: Standoff 2 -->
+            <div class="product-card">
+                <img class="product-img" src="menu_so2.png" alt="Standoff 2">
+                <div class="product-name">Ra1ron.dls MENU</div>
+                <div class="product-desc">Standoff 2 • v0.39.2 (Non-Root)</div>
+                <button class="buy-btn" onclick="openTelegram()">Выбрать</button>
+            </div>
+
+            <!-- Продукт 2: PUBG Mobile -->
+            <div class="product-card disabled">
+                <img class="product-img" src="menu_pubg.jpg" alt="PUBG Mobile">
+                <div class="product-name">Riron.dls PUBG</div>
+                <div class="product-desc">PUBG Mobile • Global version</div>
+                <div class="soon-btn">Скоро выйдет</div>
+            </div>
+
+        </div>
+
+        <!-- ГЛАВНАЯ ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
+        <div class="main-content">
+            
+            <!-- Левый персонаж -->
+            <img class="character-left" src="character1.jpg" alt="Standoff Character Left">
+            
+            <!-- Текст -->
+            <h2>Премиальный софт<br>Ra1ron.dls<br>для Standoff 2</h2>
+            <p>Удобные оверлей-меню, кастомные прицелы FOV и стабильная работа без вылетов.</p>
+            <button class="action-btn" onclick="openTelegram()">Войти в группу</button>
+
+            <!-- Правый персонаж -->
+            <img class="character-right" src="character2.jpg" alt="Standoff Character Right">
+
+        </div>
+
+    </div>
+
+    <script>
+        function openTelegram() {
+            // Твоя прямая рабочая ссылка на Telegram-канал
+            window.location.href = "https://t.me/+tdZ4G5Gp578zODli";
+        }
+    </script>
+
+</body>
+</html>
