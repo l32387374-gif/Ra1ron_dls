@@ -9,22 +9,22 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background: #0a0a0c; 
             font-family: 'Segoe UI', Roboto, sans-serif;
             color: #FFFFFF;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* ГЛАВНЫЙ БОЛЬШОЙ КОНТЕЙНЕР */
         .hub-container {
             display: flex;
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
-            height: 85vh;
+            height: 90vh;
             background: rgba(18, 18, 22, 0.6);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -36,10 +36,10 @@
 
         /* ЛЕВАЯ ПАНЕЛЬ С ТОВАРAМИ */
         .products-sidebar {
-            width: 30%;
+            width: 35%;
             background: rgba(10, 10, 12, 0.4);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px;
+            padding: 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -124,7 +124,7 @@
 
         /* ЦЕНТРАЛЬНАЯ ЧАСТЬ */
         .main-content {
-            width: 70%;
+            width: 65%;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -136,9 +136,9 @@
         }
 
         /* ТЕКСТ ПО ЦЕНТРУ ЭКРАНА */
-        .main-content h2 {
-20:20
-font-size: 32px;
+20:38
+.main-content h2 {
+            font-size: 32px;
             font-weight: 800;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -177,14 +177,14 @@ font-size: 32px;
             box-shadow: 0 5px 20px rgba(255, 51, 51, 0.5);
         }
 
-        /* ПЕРСОНАЖИ ВЫРАВНЕНЫ ВЫШЕ И ВСТАЛИ РОВНО ПО БОКАМ */
+        /* ПЕРСОНАЖИ ВЫРАВНЕНЫ ПО БОКАМ */
         .character-left {
             position: absolute;
-            left: 30px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            height: 180px;       
-            width: 180px;        
+            height: 150px;       
+            width: 150px;        
             object-fit: cover;   
             border-radius: 24px; 
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -193,16 +193,50 @@ font-size: 32px;
         }
         .character-right {
             position: absolute;
-            right: 30px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
-            height: 180px;
-            width: 180px;
+            height: 150px;
+            width: 150px;
             object-fit: cover;
             border-radius: 24px; 
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 2;
             pointer-events: none;
+        }
+
+        /* АДАПТИВНОСТЬ ПОД ТЕЛЕФОНЫ (МОБИЛЬНАЯ ВЕРСИЯ) */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+                height: auto;
+                padding: 20px 0;
+            }
+            .hub-container {
+                flex-direction: column-reverse; /* Карточки товаров будут внизу, контент вверху */
+                height: auto;
+                width: 92%;
+            }
+            .products-sidebar {
+                width: 100%;
+                border-right: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                padding: 20px;
+            }
+            .main-content {
+                width: 100%;
+                padding: 40px 20px;
+            }
+            .main-content h2 {
+                font-size: 24px;
+            }
+            .main-content p {
+                font-size: 14px;
+            }
+            /* Прячем персонажей на телефонах, чтобы они не налезали на текст */
+            .character-left, .character-right {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -230,8 +264,8 @@ font-size: 32px;
             </div>
 
         </div>
-
-        <!-- ГЛАВНАЯ ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
+20:38
+<!-- ГЛАВНАЯ ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
         <div class="main-content">
             
             <!-- Левый персонаж -->
@@ -251,8 +285,7 @@ font-size: 32px;
 
     <script>
         function openTelegram() {
-            // Твоя прямая рабочая ссылка на Telegram-канал
-            window.location.href = "https://t.me/+tdZ4G5Gp578zODli";
+            window.location.href = "https://t.me";
         }
     </script>
 
